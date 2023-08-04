@@ -13,7 +13,7 @@ public class Main {
             return x;
         };
 
-        context.registerBean("parrot_Antonio", Parrot.class,supplier );
+        context.registerBean("parrot_Antonio", Parrot.class, supplier);
 
         System.out.println(context.getBean("parrot_Antonio"));
 
