@@ -25,7 +25,7 @@ public class LoggingAspect {
         aspectComment.setText("Comment from Logging Aspect");
         aspectComment.setAuthor("Daemon");
         Object[] newArgs = {aspectComment};
-        
+
         logger.info("Method " + methodName + " with parameters " + Arrays.asList(param) + " will execute.");
 
         /*Sends a new parameter to the method*/
@@ -33,8 +33,6 @@ public class LoggingAspect {
         logger.info("Method " + joinPoint.getSignature().getName() + "() completed execution and returned " + returnedValue + ".");
 
         return "FAILED";
-
-
     }
 
 }
