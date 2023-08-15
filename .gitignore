@@ -6,3 +6,15 @@ SpringStartHereMyExercises.iml
 *.class
 
 ch2.springcontext/target/
+
+ch8_springboot_webapp/.gradle/8.2.1/fileChanges/last-build.bin
+
+ch8_springboot_webapp/.gradle/8.2.1/gc.properties
+
+ch8_springboot_webapp/.mvn/wrapper/maven-wrapper.jar
+
+ch8_springboot_webapp/.mvn/wrapper/maven-wrapper.properties
+
+ch8_springboot_webapp/mvnw
+
+ch8_springboot_webapp/mvnw.cmd
