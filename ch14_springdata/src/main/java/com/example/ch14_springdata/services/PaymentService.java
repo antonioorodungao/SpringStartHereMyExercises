@@ -23,7 +23,7 @@ public class PaymentService {
     }
 
     public Account getAccount(long id) throws AccountNotFoundException {
-        return repository.findAccountById(id).orElseThrow(() -> new AccountNotFoundException());
+        return repository.findAccountById(id).orElseThrow((AccountNotFoundException::new));
     }
 
     public List<Account> getAccountsByName(String name) {
@@ -32,16 +32,19 @@ public class PaymentService {
 
     @Transactional
     public boolean transfer(long sourceId, long destinationId, BigDecimal amount) throws AccountNotFoundException {
-        Account srcAcc = getAccount(sourceId);
-        Account destAcc = getAccount(destinationId);
-        return
-                updateAccountBalance(srcAcc.getBalance().subtract(amount), srcAcc.getId())
-                        &&
-                        updateAccountBalance(destAcc.getBalance().add(amount), destinationId);
+//        Account srcAcc = getAccount(sourceId);
+//        Account destAcc = getAccount(destinationId);
+
+        Account srcAcc = repository.findAccountById(sourceId).orElseThrow(AccountNotFoundException::new);
+        Account destAcc = repository.findAccountById(destinationId).orElseThrow(AccountNotFoundException::new);
+
+        boolean update = updateAccountBalance(srcAcc.getId(), srcAcc.getBalance().subtract(amount));
+        update = updateAccountBalance(destinationId, destAcc.getBalance().add(amount));
+        return update;
 
     }
 
-    public boolean updateAccountBalance(BigDecimal amount, long id) {
+    public boolean updateAccountBalance(long id, BigDecimal amount) {
         return repository.updateAccountBalance(id, amount
         );
     }

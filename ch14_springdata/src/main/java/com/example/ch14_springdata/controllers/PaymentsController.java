@@ -46,7 +46,7 @@ public class PaymentsController {
 
     @PostMapping("/updatebalance")
     public ResponseEntity updateBalance(@RequestParam long id, @RequestParam BigDecimal amount){
-        boolean success = service.updateAccountBalance(amount,id);
+        boolean success = service.updateAccountBalance(id, amount);
         return  ResponseEntity.accepted().body(success);
     }
 }
